@@ -3,80 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Bot Integration</title>
 </head>
 <body>
+    <script>
+        (function() {
+            var chatBubble = document.createElement('div');
+            chatBubble.id = 'chatBubble';
+            chatBubble.style.position = 'fixed';
+            chatBubble.style.bottom = '20px';
+            chatBubble.style.right = '20px';
+            chatBubble.style.width = '60px';
+            chatBubble.style.height = '60px';
+            chatBubble.style.backgroundColor = '#0078d4';
+            chatBubble.style.borderRadius = '50%';
+            chatBubble.style.boxShadow = '0 4px 8px rgba(0,0,0,0.2)';
+            chatBubble.style.cursor = 'pointer';
+            chatBubble.style.display = 'flex';
+            chatBubble.style.justifyContent = 'center';
+            chatBubble.style.alignItems = 'center';
+            chatBubble.style.color = 'white';
+            chatBubble.style.fontSize = '24px';
+            chatBubble.style.zIndex = '1000';
+            chatBubble.innerHTML = '💬';
+            document.body.appendChild(chatBubble);
 
-<script>
-    (function() {
-        // Create chat bubble
-        var chatBubble = document.createElement('div');
-        chatBubble.id = 'chatBubble';
-        chatBubble.style.position = 'fixed';
-        chatBubble.style.bottom = '20px';
-        chatBubble.style.right = '20px';
-        chatBubble.style.width = '60px';
-        chatBubble.style.height = '60px';
-        chatBubble.style.backgroundColor = '#0078d4';
-        chatBubble.style.borderRadius = '50%';
-        chatBubble.style.boxShadow = '0 4px 8px rgba(0,0,0,0.2)';
-        chatBubble.style.cursor = 'pointer';
-        chatBubble.style.display = 'flex';
-        chatBubble.style.justifyContent = 'center';
-        chatBubble.style.alignItems = 'center';
-        chatBubble.style.color = 'white';
-        chatBubble.style.fontSize = '24px';
-        chatBubble.style.zIndex = '1000';
-        chatBubble.innerHTML = '💬';
-        document.body.appendChild(chatBubble);
-
-        // Create chat iframe container
-        var chatIframeContainer = document.createElement('div');
-        chatIframeContainer.id = 'chatIframeContainer';
-        chatIframeContainer.style.position = 'fixed';
-        chatIframeContainer.style.bottom = '90px';
-        chatIframeContainer.style.right = '20px';
-        chatIframeContainer.style.width = '400px';
-        chatIframeContainer.style.height = '500px';
-        chatIframeContainer.style.display = 'none';
-        chatIframeContainer.style.border = '1px solid #ccc';
-        chatIframeContainer.style.boxShadow = '0 4px 8px rgba(0,0,0,0.2)';
-        chatIframeContainer.style.zIndex = '999';
-        document.body.appendChild(chatIframeContainer);
-
-        // Create close button
-        var closeBtn = document.createElement('button');
-        closeBtn.id = 'closeBtn';
-        closeBtn.innerHTML = '✖';
-        closeBtn.style.position = 'absolute';
-        closeBtn.style.top = '10px';
-        closeBtn.style.right = '10px';
-        closeBtn.style.backgroundColor = '#f44336';
-        closeBtn.style.color = 'white';
-        closeBtn.style.border = 'none';
-        closeBtn.style.borderRadius = '50%';
-        closeBtn.style.width = '24px';
-        closeBtn.style.height = '24px';
-        closeBtn.style.cursor = 'pointer';
-        chatIframeContainer.appendChild(closeBtn);
-
-        // Create iframe
-        var iframe = document.createElement('iframe');
-        iframe.src = 'https://web.powerva.microsoft.com/environments/e611bacb-2a96-ec2e-9674-62414b4c8b57/bots/cr26f_testCoPilot/webchat?__version__=2';
-        iframe.style.width = '100%';
-        iframe.style.height = '100%';
-        iframe.style.border = 'none';
-        chatIframeContainer.appendChild(iframe);
-
-        // Add event listeners
-        chatBubble.addEventListener('click', function() {
-            chatIframeContainer.style.display = 'block';
-        });
-
-        closeBtn.addEventListener('click', function() {
+            var chatIframeContainer = document.createElement('div');
+            chatIframeContainer.id = 'chatIframeContainer';
+            chatIframeContainer.style.position = 'fixed';
+            chatIframeContainer.style.bottom = '90px';
+            chatIframeContainer.style.right = '20px';
+            chatIframeContainer.style.width = '400px';
+            chatIframeContainer.style.height = '500px';
             chatIframeContainer.style.display = 'none';
-        });
-    })();
-</script>
+            chatIframeContainer.style.border = '1px solid #ccc';
+            chatIframeContainer.style.boxShadow = '0 4px 8px rgba(0,0,0,0.2)';
+            chatIframeContainer.style.zIndex = '999';
+            document.body.appendChild(chatIframeContainer);
 
+            var closeBtn = document.createElement('button');
+            closeBtn.id = 'closeBtn';
+            closeBtn.innerHTML = '✖';
+            closeBtn.style.position = 'absolute';
+            closeBtn.style.top = '10px';
+            closeBtn.style.right = '10px';
+            closeBtn.style.backgroundColor = '#f44336';
+            closeBtn.style.color = 'white';
+            closeBtn.style.border = 'none';
+            closeBtn.style.borderRadius = '50%';
+            closeBtn.style.width = '24px';
+            closeBtn.style.height = '24px';
+            closeBtn.style.cursor = 'pointer';
+            chatIframeContainer.appendChild(closeBtn);
+
+            var iframe = document.createElement('iframe');
+            iframe.src = 'https://web.powerva.microsoft.com/environments/7bf6f5a3-8b09-eab4-b2eb-618a553c4146/bots/crfb3_eyTestPoC/webchat?__version__=2';
+            iframe.style.width = '100%';
+            iframe.style.height = '100%';
+            iframe.style.border = 'none';
+            chatIframeContainer.appendChild(iframe);
+
+            chatBubble.addEventListener('click', function() {
+                chatIframeContainer.style.display = chatIframeContainer.style.display === 'none' ? 'block' : 'none';
+            });
+
+            closeBtn.addEventListener('click', function() {
+                chatIframeContainer.style.display = 'none';
+            });
+        })();
+    </script>
 </body>
 </html>
