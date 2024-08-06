@@ -23,9 +23,14 @@
             chatBubble.style.justifyContent = 'center';
             chatBubble.style.alignItems = 'center';
             chatBubble.style.zIndex = '1000';
-            chatBubble.style.backgroundImage = 'url("public/image.jpg")';
-            chatBubble.style.backgroundSize = 'cover';
-            chatBubble.style.backgroundPosition = 'center';
+
+            var chatIcon = document.createElement('img');
+            chatIcon.src = 'public/image2.png';
+            chatIcon.style.width = '100%';
+            chatIcon.style.height = '100%';
+            chatIcon.style.borderRadius = '50%';
+            chatBubble.appendChild(chatIcon);
+
             document.body.appendChild(chatBubble);
 
             var chatIframeContainer = document.createElement('div');
