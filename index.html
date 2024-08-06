@@ -22,10 +22,10 @@
             chatBubble.style.display = 'flex';
             chatBubble.style.justifyContent = 'center';
             chatBubble.style.alignItems = 'center';
-            chatBubble.style.color = 'white';
-            chatBubble.style.fontSize = '24px';
             chatBubble.style.zIndex = '1000';
-            chatBubble.innerHTML = '💬';
+            chatBubble.style.backgroundImage = 'url("public/image.png")';
+            chatBubble.style.backgroundSize = 'cover';
+            chatBubble.style.backgroundPosition = 'center';
             document.body.appendChild(chatBubble);
 
             var chatIframeContainer = document.createElement('div');
@@ -47,9 +47,9 @@
             closeBtn.style.position = 'absolute';
             closeBtn.style.top = '10px';
             closeBtn.style.right = '10px';
-            closeBtn.style.backgroundColor = '#f44336';
+            closeBtn.style.backgroundColor = 'transparent';
             closeBtn.style.color = 'white';
-            closeBtn.style.border = 'none';
+            closeBtn.style.border = '1px solid white';
             closeBtn.style.borderRadius = '50%';
             closeBtn.style.width = '24px';
             closeBtn.style.height = '24px';
